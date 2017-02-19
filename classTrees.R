@@ -7,6 +7,7 @@
 #install.packages("tree")
 #install.packages("rattle")
 #install.packages("RColorBrewer")
+#install.packages("RGtk2s")
 
 library(tree)
 library(ISLR)
@@ -97,6 +98,8 @@ mymodel.prune$cptable
 fancyRpartPlot(mymodel.prune, main="Decision Tree With Minimum C.V. Error")
 asRules(mymodel.prune)
 ###Specifying a Loss Matrix
+#false negative is ten times more unwelcome than a false positive
+#specifying weights for each of the types of predictions
 mymodel.prune<-rpart(RainTomorrow~.,data=weather[train,],method="class",
                      parms=list(split="information"),control=rpart.control(usesurrogate=0,
                                                                            maxsurrogate=0,cp=0,minbucket=1,minsplit=2,loss=matrix(c(0,1,10,0), byrow=TRUE, nrow=2)))
