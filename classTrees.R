@@ -7,7 +7,7 @@
 #install.packages("tree")
 #install.packages("rattle")
 #install.packages("RColorBrewer")
-#install.packages("RGtk2s")
+#install.packages("RGtk2")
 
 library(tree)
 library(ISLR)
